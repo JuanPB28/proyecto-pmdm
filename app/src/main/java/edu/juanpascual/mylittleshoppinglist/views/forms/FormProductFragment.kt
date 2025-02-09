@@ -14,6 +14,8 @@ import edu.juanpascual.mylittleshoppinglist.views.list.ShoppingListViewModel
 class FormProductFragment : BottomSheetDialogFragment() {
 
     companion object {
+        var listId: Int = 0
+
         fun newInstance() = FormProductFragment()
     }
 
@@ -27,12 +29,22 @@ class FormProductFragment : BottomSheetDialogFragment() {
         binding = FragmentFormProductBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[ShoppingListViewModel::class.java]
 
-        // TODO: Arreglar
         binding.buttonAddProduct.setOnClickListener {
             val name = binding.textInputName.text.toString()
-            val price = binding.textInputPrice.text.toString().toDouble()
-            val amount = binding.textInputAmount.text.toString().toInt()
-            val listId = viewModel.getListId()
+            val priceTxt = binding.textInputPrice.text.toString()
+            val amountTxt = binding.textInputAmount.text.toString()
+            val listId = listId
+
+            var price = 0.0
+            var amount = 0
+
+            if (priceTxt.isNotEmpty()) {
+                price = priceTxt.toDouble()
+            }
+
+            if (amountTxt.isNotEmpty()) {
+                amount = amountTxt.toInt()
+            }
 
             if (name.isEmpty()) {
                 Toast.makeText(requireContext(), "Please fill at least the name field", Toast.LENGTH_SHORT).show()

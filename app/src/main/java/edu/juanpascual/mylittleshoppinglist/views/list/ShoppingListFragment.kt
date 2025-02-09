@@ -13,7 +13,6 @@ import edu.juanpascual.mylittleshoppinglist.utils.ItemClickListener
 import edu.juanpascual.mylittleshoppinglist.utils.deleteDialog
 import edu.juanpascual.mylittleshoppinglist.utils.showDialog
 import edu.juanpascual.mylittleshoppinglist.views.forms.FormProductFragment
-import edu.juanpascual.mylittleshoppinglist.views.forms.FormShoppingListFragment
 
 class ShoppingListFragment : Fragment(), ItemClickListener<Int> {
 
@@ -49,12 +48,13 @@ class ShoppingListFragment : Fragment(), ItemClickListener<Int> {
         // Configurar el SwipeRefreshLayout
         binding.swipeRefreshLayout.setOnRefreshListener {
             viewModel.loadProducts(requireContext(), args.listId)
-            binding.fabPurchase.text = "Precio: ${viewModel.getTotalPrice()}€"
+            binding.fabPurchase.text = "Total: ${viewModel.getTotalPrice()}€"
             binding.swipeRefreshLayout.isRefreshing = false
         }
 
         // Configurar el botón flotante para añadir una nuevo producto
         binding.fabProducts.setOnClickListener {
+            FormProductFragment.listId = args.listId
             FormProductFragment.newInstance().show(childFragmentManager, "formProduct")
         }
 

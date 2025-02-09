@@ -54,8 +54,4 @@ class ShoppingListViewModel : ViewModel() {
         }
         return totalPrice
     }
-
-    fun getListId(): Int {
-        return _products.value!![0].getListId()
-    }
 }
