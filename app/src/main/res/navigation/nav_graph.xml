@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="edu.juanpascual.mylittleshoppinglist.views.list.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_shoppingListFragment"
+            app:destination="@id/shoppingListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="edu.juanpascual.mylittleshoppinglist.views.shop.ShopFragment"
+        android:label="Shops"
+        tools:layout="@layout/fragment_shop" >
+        <action
+            android:id="@+id/action_shopFragment_to_detailShopFragment"
+            app:destination="@id/detailShopFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyFragment"
+        android:name="edu.juanpascual.mylittleshoppinglist.views.history.HistoryFragment"
+        android:label="History"
+        tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/shoppingListFragment"
+        android:name="edu.juanpascual.mylittleshoppinglist.views.list.ShoppingListFragment"
+        android:label="Shopping List"
+        tools:layout="@layout/fragment_shopping_list" >
+        <argument
+            android:name="listId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailShopFragment"
+        android:name="edu.juanpascual.mylittleshoppinglist.views.shop.DetailShopFragment"
+        android:label="Detail Shop"
+        tools:layout="@layout/fragment_detail_shop" >
+        <argument
+            android:name="shopId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+</navigation>

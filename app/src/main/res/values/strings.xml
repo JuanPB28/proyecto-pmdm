@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">MyLittleShoppingList</string>
+    <string name="title_app">My Little Shopping List</string>
+    <string name="logo_app">Logo app</string>
+    <string name="home">Home</string>
+    <string name="products">Products</string>
+    <string name="shops">Shops</string>
+    <string name="history">History</string>
+    <string name="image_app">Image app</string>
+    <string name="open_nav">Open navigation drawer</string>
+    <string name="close_nav">Close navigation drawer</string>
+    <string name="address_dialog_title">Address</string>
+    <string name="address_dialog_text">Open navigation app</string>
+    <string name="accept">Ok</string>
+    <string name="cancel">Cancel</string>
+    <string name="button_add_shop">Button add shop</string>
+    <string name="save">Save</string>
+    <string name="new_shop">New Shop</string>
+    <string name="name">Name:</string>
+    <string name="address">Address:</string>
+    <string name="phone">Phone:</string>
+    <string name="website">Website:</string>
+    <string name="euro">€</string>
+    <string name="shop">Shop:</string>
+    <string name="new_list">New Shopping List</string>
+    <string name="button_add_product">Button add product</string>
+    <string name="button_add_list">Button add Shopping List</string>
+    <string name="button_purchase">Button purchase</string>
+    <string name="new_product">New Product</string>
+    <string name="price">Price:</string>
+    <string name="amount">Amount:</string>
 </resources>
