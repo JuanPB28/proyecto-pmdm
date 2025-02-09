@@ -336,15 +336,15 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     fun getTotalPriceByListId(listId: Int): Double {
-        // Todo: Arreglar lógica, mal calculado, multiplicar cantidad por precio de cada producto
         var totalPrice = 0.0
         val db = this.readableDatabase
 
-        db.rawQuery("SELECT SUM($PRODUCT_COLUMN_PRICE * $PRODUCT_COLUMN_QUANTITY) FROM $TABLE_PRODUCT WHERE $PRODUCT_COLUMN_LIST_ID = ?", arrayOf(listId.toString())).use { cursor ->
+        val cursor = db.rawQuery("SELECT * FROM $TABLE_PRODUCT WHERE $PRODUCT_COLUMN_LIST_ID = ?", arrayOf(listId.toString())).use { cursor ->
             while (cursor.moveToNext()) {
-                totalPrice = cursor.getDouble(0)
+                totalPrice += cursor.getDouble(cursor.getColumnIndexOrThrow(PRODUCT_COLUMN_PRICE)) * cursor.getInt(cursor.getColumnIndexOrThrow(PRODUCT_COLUMN_QUANTITY))
             }
         }
+
         return totalPrice
     }
 
