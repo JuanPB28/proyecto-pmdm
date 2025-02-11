@@ -9,7 +9,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import edu.juanpascual.mylittleshoppinglist.databinding.ActivityMainBinding
-import edu.juanpascual.mylittleshoppinglist.db.addExampleShops
 
 
 class MainActivity : AppCompatActivity() {
@@ -40,5 +39,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-
+    // TODO: validar entradas de texto y cambiar teclado
+    // TODO: añadir métodos pora editar los diferentes objetos
 }

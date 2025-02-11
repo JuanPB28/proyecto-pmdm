@@ -31,7 +31,7 @@ class HistoryAdapter(
 
         // Establecer el listener
         holder.binding.cardViewList.setOnLongClickListener {
-            itemClickListener.onItemClick(historyList[position].getId())
+            itemClickListener.onItemLongClick(historyList[position].getId())
             true
         }
     }

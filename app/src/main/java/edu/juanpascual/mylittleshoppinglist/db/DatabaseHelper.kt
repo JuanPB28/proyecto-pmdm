@@ -339,7 +339,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         var totalPrice = 0.0
         val db = this.readableDatabase
 
-        val cursor = db.rawQuery("SELECT * FROM $TABLE_PRODUCT WHERE $PRODUCT_COLUMN_LIST_ID = ?", arrayOf(listId.toString())).use { cursor ->
+        db.rawQuery("SELECT * FROM $TABLE_PRODUCT WHERE $PRODUCT_COLUMN_LIST_ID = ?", arrayOf(listId.toString())).use { cursor ->
             while (cursor.moveToNext()) {
                 totalPrice += cursor.getDouble(cursor.getColumnIndexOrThrow(PRODUCT_COLUMN_PRICE)) * cursor.getInt(cursor.getColumnIndexOrThrow(PRODUCT_COLUMN_QUANTITY))
             }
@@ -348,4 +348,46 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return totalPrice
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    // Example data
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
+    private fun addExampleShops() {
+        insertShop(Shop("Supermercado Elche", "Calle Mayor, 123", "966 12 34 56", "www.supermercadoelche.es"))
+        insertShop(Shop("Tienda de Ropa Moderna", "Avenida Libertad, 45", "966 98 76 54", "www.ropamoderna.com"))
+        insertShop(Shop("La Librería", "Plaza de la Constitución, 7", "966 11 22 33", "www.lalibreria.es"))
+        insertShop(Shop("Panadería Crujiente", "Calle del Sol, 89", "966 55 66 77", ""))
+        insertShop(Shop("El Rincón del Artesano Local", "Travesía del Mercado, 1", "966 77 88 99", "www.artesanolocal.es"))
+        insertShop(Shop("Electrodomésticos & Más", "C/ Alfonso XIII, nº 2", "966 44 55 66", "www.electrodomesticosymas.com"))
+        insertShop(Shop("Restaurante Italiano 'La Pasta'", "Paseo Marítimo, s/n", "966 22 33 44", "www.lapasta.es"))
+        insertShop(Shop("JOYERIA DIAMANTES", "CALLE ORO, 10", "966 88 99 00", "www.joyeriadiamantes.es"))
+        insertShop(Shop("La Tienda de la Esquina", "Callejón sin Salida, 3", "966 33 44 55", ""))
+        insertShop(Shop("Informática 24h", "Avenida de la Informática, 24", "966 66 77 88", "www.informatica24h.es"))
+    }
+
+    private fun addExampleLists() {
+        insertShoppingList(ShoppingList("Lista de la compra 1", 1))
+        insertShoppingList(ShoppingList("Lista de la compra 2", 2))
+        insertShoppingList(ShoppingList("Lista de la compra 3", 3))
+    }
+
+    private fun addExampleProducts() {
+        insertProduct(Product("Manzanas", 1.5, 5, 1))
+        insertProduct(Product("Pan", 0.8, 10, 1))
+        insertProduct(Product("Leche", 1.2, 3, 1))
+
+        insertProduct(Product("Camiseta", 15.0, 2, 2))
+        insertProduct(Product("Pantalones", 20.0, 3, 2))
+        insertProduct(Product("Zapatos", 30.0, 1, 2))
+
+        insertProduct(Product("Libro", 10.0, 1, 3))
+        insertProduct(Product("Pelota", 5.0, 2, 3))
+        insertProduct(Product("Raqueta", 20.0, 1, 3))
+    }
+
+    fun addExampleData() {
+        addExampleShops()
+        addExampleLists()
+        addExampleProducts()
+    }
 }
